@@ -36,9 +36,10 @@
 }
 
 /* ── Rocket Cursor ── */
-*,
-*::before,
-*::after {
+body.rocket-active,
+body.rocket-active *,
+body.rocket-active *::before,
+body.rocket-active *::after {
     cursor: none !important;
 }
 
@@ -52,6 +53,19 @@
     transition: filter 0.3s ease;
     will-change: transform;
     filter: drop-shadow(0 0 4px rgba(100, 160, 255, 0.3));
+    display: none;
+}
+
+body.rocket-active #rocket-cursor {
+    display: block;
+}
+
+body.rocket-active #rocket-trail-canvas {
+    display: block;
+}
+
+#rocket-trail-canvas {
+    display: none;
 }
 
 #rocket-cursor.hovering {

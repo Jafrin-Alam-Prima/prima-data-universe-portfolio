@@ -1083,6 +1083,7 @@
        17. ROCKET CURSOR SYSTEM
        ──────────────────────────────────────────── */
     function initRocketCursor() {
+        document.body.classList.add('rocket-active');
         const rocket = document.getElementById('rocket-cursor');
         const trailCanvas = document.getElementById('rocket-trail-canvas');
         const trailCtx = trailCanvas.getContext('2d');
