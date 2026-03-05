@@ -595,19 +595,21 @@
                 </div>
                 <div class="glass-card form-card reveal-element">
                     <h3>📨 Send a Transmission</h3>
-                    <form id="contact-form" onsubmit="return false;">
+                    <form id="contact-form" action="https://formspree.io/f/mgonwrrk" method="POST">
                         <div class="form-group">
                             <label for="sender-name">Your Name</label>
-                            <input type="text" id="sender-name" placeholder="Commander..." autocomplete="name">
+                            <input type="text" id="sender-name" name="name" placeholder="Commander..."
+                                autocomplete="name" required>
                         </div>
                         <div class="form-group">
                             <label for="sender-email">Your Email</label>
-                            <input type="email" id="sender-email" placeholder="signal@galaxy.com" autocomplete="email">
+                            <input type="email" id="sender-email" name="email" placeholder="signal@galaxy.com"
+                                autocomplete="email" required>
                         </div>
                         <div class="form-group">
                             <label for="sender-message">Message</label>
-                            <textarea id="sender-message" rows="4"
-                                placeholder="Transmit your message across the cosmos..."></textarea>
+                            <textarea id="sender-message" name="message" rows="4"
+                                placeholder="Transmit your message across the cosmos..." required></textarea>
                         </div>
                         <button type="submit" class="cta-button">🚀 Transmit Message</button>
                     </form>

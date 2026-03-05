@@ -1060,11 +1060,29 @@
        ──────────────────────────────────────────── */
     function initContactForm() {
         const form = document.getElementById('contact-form');
-        form?.addEventListener('submit', (e) => {
+        form?.addEventListener('submit', async (e) => {
             e.preventDefault();
-            showToast('📡 Transmission Sent!', 'Your message has been launched into the cosmos!');
-            playChime();
-            form.reset();
+            const btn = form.querySelector('button[type="submit"]');
+            btn.textContent = '🛸 Transmitting...';
+            btn.disabled = true;
+            try {
+                const resp = await fetch(form.action, {
+                    method: 'POST',
+                    body: new FormData(form),
+                    headers: { 'Accept': 'application/json' }
+                });
+                if (resp.ok) {
+                    showToast('📡 Transmission Sent!', 'Your message has been delivered across the cosmos!');
+                    playChime();
+                    form.reset();
+                } else {
+                    showToast('⚠️ Transmission Failed', 'Something went wrong. Please try again.');
+                }
+            } catch (err) {
+                showToast('⚠️ Transmission Failed', 'Network error. Please try again.');
+            }
+            btn.textContent = '🚀 Transmit Message';
+            btn.disabled = false;
         });
     }
 
